@@ -1,11 +1,11 @@
-name: remote ssh command
+name: deploy
 on: [push]
 jobs:
   build:
-    name: Whoami
+    name: whoami
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
+    - name: whoami
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
