@@ -4,7 +4,7 @@
       <div class="d-flex align-center">
         <v-img
           class="shrink mr-2"
-          src="@/assets/logo.svg"
+          src="./assets/img/logo.svg"
           height="60px"
           width="60px"
           contain
