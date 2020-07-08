@@ -1,6 +1,6 @@
 <template>
   <div class="home" key="/">
-    <h1>About Me</h1>
+    <h1 class="title">About Me</h1>
     <p>
       Hello! I'm
       <v-tooltip right>
