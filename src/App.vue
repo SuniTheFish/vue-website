@@ -1,32 +1,26 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-app-bar app>
+      <div class="d-flex align-center">
+        <v-img
+          class="shrink mr-2"
+          src="@/assets/logo.svg"
+          height="60px"
+          width="60px"
+          contain
+        />
+        <v-toolbar-title>BenjaminHinchliff.com</v-toolbar-title>
+      </div>
+      <v-spacer />
+      <v-toolbar-items>
+        <v-btn to="/">Home</v-btn>
+        <v-btn to="/projects">Projects</v-btn>
+      </v-toolbar-items>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <router-view />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
