@@ -1,5 +1,5 @@
 <template>
-  <div class="projects">
+  <div class="projects" key="/projects">
     <h1>Projects</h1>
     <v-container>
       <projects-list />

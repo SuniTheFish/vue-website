@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" key="/">
     <h1>About Me</h1>
     <p>
       Hello! I'm Benjamin, a (largely) independent developer who codes in every

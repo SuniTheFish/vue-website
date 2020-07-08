@@ -19,7 +19,9 @@
     </v-app-bar>
     <v-main>
       <v-container>
-        <router-view />
+        <keep-alive>
+          <router-view />
+        </keep-alive>
       </v-container>
     </v-main>
   </v-app>
