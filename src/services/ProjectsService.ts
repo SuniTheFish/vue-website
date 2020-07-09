@@ -1,6 +1,6 @@
 import axios from "axios";
-import Project from "../interfaces/project";
-import Service from "../interfaces/service";
+import Project from "../interfaces/Project";
+import Service from "../interfaces/Service";
 
 export default class ProjectsService implements Service<Project[]> {
   async get(): Promise<Project[]> {

@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { stub } from "sinon";
 import { shallowMount } from "@vue/test-utils";
 import ProjectsList from "@/components/ProjectsList.vue";
-import Project from "@/interfaces/project";
+import Project from "@/interfaces/Project";
 import ProjectsService from "@/services/ProjectsService";
 import { normalizeString } from "@/utils/normalize";
 

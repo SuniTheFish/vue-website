@@ -25,8 +25,8 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Project from "../interfaces/project";
-import Service from "../interfaces/service";
+import Project from "../interfaces/Project";
+import Service from "../interfaces/Service";
 import { normalizeString } from "../utils/normalize";
 
 export default Vue.extend({
