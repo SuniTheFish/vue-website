@@ -1,8 +1,13 @@
 <template>
   <div class="projects-list">
-    <v-card class="mb-1" v-for="project in projects" :key="project.id">
+    <v-card
+      class="mb-1"
+      v-for="project in projects"
+      :key="project.id"
+      :data-project-id="project.id"
+    >
       <v-card-title>
-        <a :href="project.html_url" target="_blank" rel="noopener norefferer">
+        <a :href="project.htmlUrl" target="_blank" rel="noopener norefferer">
           {{ normalizeName(project.name) }}
         </a>
       </v-card-title>
@@ -20,36 +25,30 @@
 
 <script lang="ts">
 import Vue from "vue";
-import ProjectsService from "../services/ProjectsService";
 import Project from "../interfaces/project";
+import Service from "../interfaces/service";
+import { normalizeString } from "../utils/normalize";
+
 export default Vue.extend({
   name: "ProjectsList",
+  props: {
+    projectsService: {
+      type: Object as () => Service<Project[]>
+    }
+  },
   data() {
     return {
-      projectsService: new ProjectsService(),
       projects: [] as Project[]
     };
   },
   created() {
     this.projectsService
-      .getProjects()
+      .get()
       .then(projects => (this.projects = projects))
       .catch(error => console.error(error));
   },
   methods: {
-    normalizeName(name: string): string {
-      return name
-        .replace(/[-_]/g, " ") // dashes to spaces
-        .replace(/([a-z])([A-Z])/g, "$1 $2") // camelCase to spaces
-        .toLowerCase()
-        .split(" ")
-        .reduce(
-          // capitalize each word
-          (str, word) => `${str} ${word[0].toUpperCase()}${word.slice(1)}`,
-          ""
-        )
-        .trim();
-    }
+    normalizeName: normalizeString
   }
 });
 </script>
