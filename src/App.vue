@@ -1,22 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <div class="d-flex align-center">
-        <v-img
-          class="shrink mr-2"
-          src="./assets/img/logo.svg"
-          height="60px"
-          width="60px"
-          contain
-        />
-        <v-toolbar-title>BenjaminHinchliff.com</v-toolbar-title>
-      </div>
-      <v-spacer />
-      <v-toolbar-items>
-        <v-btn to="/">Home</v-btn>
-        <v-btn to="/projects">Projects</v-btn>
-      </v-toolbar-items>
-    </v-app-bar>
+    <app-bar />
     <v-main>
       <v-container>
         <keep-alive>
@@ -26,3 +10,14 @@
     </v-main>
   </v-app>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+import AppBar from "./components/AppBar.vue";
+export default Vue.extend({
+  name: "App",
+  components: {
+    AppBar
+  }
+});
+</script>
