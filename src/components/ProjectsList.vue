@@ -20,6 +20,7 @@
         {{ project.description || "(no description)" }}
       </v-card-text>
     </v-card>
+    <p class="error red--text"></p>
   </div>
 </template>
 
