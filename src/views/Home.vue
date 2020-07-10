@@ -30,8 +30,8 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: "Home",
-  components: {}
-};
+import Vue from "vue";
+export default Vue.extend({
+  name: "Home"
+});
 </script>
