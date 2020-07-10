@@ -46,10 +46,14 @@ export default Vue.extend({
     this.projectsService
       .get()
       .then(projects => (this.projects = projects))
-      .catch(error => console.error(error));
+      .catch(error => this.showError(error));
   },
   methods: {
-    normalizeName: normalizeString
+    normalizeName: normalizeString,
+    showError(err: string): void {
+      const errElement = document.querySelector(".error");
+      if (errElement) errElement.textContent = err;
+    }
   }
 });
 </script>

@@ -23,7 +23,7 @@ export default class ProjectsService implements Service<Project[]> {
         return project;
       });
     } catch (error) {
-      throw new Error(`unable to get projects! error: ${error}`);
+      throw new Error(`unable to get projects!`);
     }
   }
 
