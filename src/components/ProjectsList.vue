@@ -1,26 +1,30 @@
 <template>
   <div class="projects-list">
-    <v-card
-      class="mb-1"
-      v-for="project in projects"
-      :key="project.id"
-      :data-project-id="project.id"
-    >
-      <v-card-title>
-        <a :href="project.htmlUrl" target="_blank" rel="noopener norefferer">
-          {{ normalizeName(project.name) }}
-        </a>
-      </v-card-title>
-      <v-card-subtitle v-if="project.homepage">
-        <a :href="project.homepage" target="_blank" rel="noopener norefferer">
-          (homepage)
-        </a>
-      </v-card-subtitle>
-      <v-card-text>
-        {{ project.description || "(no description)" }}
-      </v-card-text>
-    </v-card>
-    <p class="error red--text"></p>
+    <section v-if="error">
+      <p class="red--text">{{ error }}</p>
+    </section>
+    <section>
+      <v-card
+        class="mb-1"
+        v-for="project in projects"
+        :key="project.id"
+        :data-project-id="project.id"
+      >
+        <v-card-title>
+          <a :href="project.htmlUrl" target="_blank" rel="noopener norefferer">
+            {{ normalizeName(project.name) }}
+          </a>
+        </v-card-title>
+        <v-card-subtitle v-if="project.homepage">
+          <a :href="project.homepage" target="_blank" rel="noopener norefferer">
+            (homepage)
+          </a>
+        </v-card-subtitle>
+        <v-card-text>
+          {{ project.description || "(no description)" }}
+        </v-card-text>
+      </v-card>
+    </section>
   </div>
 </template>
 
@@ -39,21 +43,18 @@ export default Vue.extend({
   },
   data() {
     return {
-      projects: [] as Project[]
+      projects: [] as Project[],
+      error: ""
     };
   },
-  created() {
+  mounted() {
     this.projectsService
       .get()
       .then(projects => (this.projects = projects))
-      .catch(error => this.showError(error));
+      .catch(error => (this.error = error));
   },
   methods: {
-    normalizeName: normalizeString,
-    showError(err: string): void {
-      const errElement = document.querySelector(".error");
-      if (errElement) errElement.textContent = err;
-    }
+    normalizeName: normalizeString
   }
 });
 </script>
