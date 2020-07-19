@@ -3,7 +3,10 @@
     <section v-if="error">
       <p class="red--text">{{ error }}</p>
     </section>
-    <section>
+    <section v-else>
+      <div v-if="loading" class="text-center">
+        <v-progress-circular indeterminate></v-progress-circular>
+      </div>
       <v-card
         class="mb-1"
         v-for="project in projects"
@@ -44,14 +47,16 @@ export default Vue.extend({
   data() {
     return {
       projects: [] as Project[],
-      error: ""
+      error: "",
+      loading: true
     };
   },
   mounted() {
     this.projectsService
       .get()
       .then(projects => (this.projects = projects))
-      .catch(error => (this.error = error));
+      .catch(error => (this.error = error))
+      .finally(() => (this.loading = false));
   },
   methods: {
     normalizeName: normalizeString
