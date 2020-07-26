@@ -1,3 +1,3 @@
 export default interface Service<T> {
-  get: () => Promise<T>;
+  get: (num: number) => Promise<T>;
 }

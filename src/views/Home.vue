@@ -1,6 +1,6 @@
 <template>
   <div class="home" key="/">
-    <h1 class="title">About Me</h1>
+    <h1>About Me</h1>
     <p>
       Hello! I'm
       <v-tooltip right>
@@ -26,12 +26,27 @@
         for this is pretty interesting (to me))
       </span>
     </p>
+    <h1>Projects</h1>
+    <v-container>
+      <projects-list :num="5" :projectsService="projectsService" />
+      <p class="text-center"><router-link to="/projects">more</router-link></p>
+    </v-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import ProjectsList from "../components/ProjectsList.vue";
+import ProjectsService from "../services/ProjectsService";
 export default Vue.extend({
-  name: "Home"
+  name: "Home",
+  components: {
+    ProjectsList
+  },
+  data() {
+    return {
+      projectsService: new ProjectsService()
+    };
+  }
 });
 </script>

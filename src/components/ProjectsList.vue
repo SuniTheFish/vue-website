@@ -1,7 +1,7 @@
 <template>
   <div class="projects-list">
     <section v-if="error">
-      <p class="red--text">{{ error }}</p>
+      <p class="red--text">Unable to load projects</p>
     </section>
     <section v-else>
       <div v-if="loading" class="text-center">
@@ -40,22 +40,24 @@ import { normalizeString } from "../utils/normalize";
 export default Vue.extend({
   name: "ProjectsList",
   props: {
-    projectsService: {
-      type: Object as () => Service<Project[]>
-    }
+    num: {
+      type: Number,
+      default: -1
+    },
+    projectsService: Object as () => Service<Project[]>
   },
   data() {
     return {
       projects: [] as Project[],
-      error: "",
+      error: false,
       loading: true
     };
   },
   mounted() {
     this.projectsService
-      .get()
+      .get(this.num)
       .then(projects => (this.projects = projects))
-      .catch(error => (this.error = error))
+      .catch(() => (this.error = true))
       .finally(() => (this.loading = false));
   },
   methods: {
