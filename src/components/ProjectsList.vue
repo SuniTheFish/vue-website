@@ -18,10 +18,16 @@
             {{ normalizeName(project.name) }}
           </a>
         </v-card-title>
-        <v-card-subtitle v-if="project.homepage">
-          <a :href="project.homepage" target="_blank" rel="noopener norefferer">
+        <v-card-subtitle>
+          <a
+            v-if="project.homepage"
+            :href="project.homepage"
+            target="_blank"
+            rel="noopener norefferer"
+          >
             (homepage)
           </a>
+          <p>Created {{ new Date(project.createdAt).toLocaleDateString() }}</p>
         </v-card-subtitle>
         <v-card-text>
           {{ project.description || "(no description)" }}
