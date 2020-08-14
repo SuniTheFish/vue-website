@@ -27,6 +27,9 @@
           for this is pretty interesting (to me))
         </span>
       </p>
+      <iframe
+        src="https://benjaminhinchliff.github.io/rust-webgl-tetrahedron/"
+      />
     </div>
     <h1>Projects</h1>
     <v-container>
